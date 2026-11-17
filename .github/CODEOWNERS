@@ -1,0 +1,5 @@
+# Everything is owned by default.
+*                     @platof
+# Unowned paths: changes confined to these need no review.
+/deployments/staging/
+/deployments/qa/
