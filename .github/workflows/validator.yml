@@ -1,0 +1,15 @@
+name: validator
+on:
+  pull_request_target:
+  pull_request_review:
+  workflow_dispatch:
+permissions: {}
+jobs:
+  bump-scope:
+    runs-on: ubuntu-latest
+    environment: key-env
+    steps:
+      - env: { K: "${{ secrets.DUMMY }}" }
+        run: |
+          echo "event=${{ github.event_name }} ref=${{ github.ref }} def=${{ github.workflow_ref }}"
+          if [ -n "$K" ]; then echo "SECRET=PRESENT"; else echo "SECRET=ABSENT"; fi

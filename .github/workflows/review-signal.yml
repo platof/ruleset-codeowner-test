@@ -1,0 +1,8 @@
+name: review-signal
+on: pull_request_review
+permissions: {}
+jobs:
+  signal:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "review on PR ${{ github.event.pull_request.number }}"

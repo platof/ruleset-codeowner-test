@@ -1,0 +1,15 @@
+name: relay
+on:
+  workflow_run:
+    workflows: [review-signal]
+    types: [completed]
+permissions: {}
+jobs:
+  bump-scope:
+    runs-on: ubuntu-latest
+    environment: key-env
+    steps:
+      - env: { K: "${{ secrets.DUMMY }}" }
+        run: |
+          echo "event=${{ github.event_name }} ref=${{ github.ref }} def=${{ github.workflow_ref }}"
+          if [ -n "$K" ]; then echo "SECRET=PRESENT"; else echo "SECRET=ABSENT"; fi
